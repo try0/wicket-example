@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html xmlns:wicket="http://wicket.apache.org">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Apache Wicket Example</title>
+
+<link rel="stylesheet"
+	href="https://cdnjs.cloudflare.com/ajax/libs/fomantic-ui/2.8.4/semantic.min.css"
+	type="text/css" media="screen" title="Stylesheet" />
+<script
+	src="https://cdnjs.cloudflare.com/ajax/libs/fomantic-ui/2.8.4/semantic.min.js"></script>
+
+
+<style>
+.footer {
+	padding-bottom: 10rem;
+}
+
+.p-10 {
+	padding: 10px !important;
+}
+
+.m-10 {
+	margin: 10px !important;
+}
+</style>
+</head>
+
+<body>
+	<div class="ui fixed inverted blue menu">
+		<div class="ui container" style="max-width: 1200px;">
+			<div class="header left item">Example</div>
+
+			<div class="right menu">
+				<a class="item" target="blank"
+					href="https://github.com/try0/wicket-example"><i
+					class="github large icon"></i></a>
+			</div>
+		</div>
+	</div>
+
+	<div class="ui container main"
+		style="max-width: 800px !important; padding-top: 4rem;">
+		<div wicket:id="listComponentExample"></div>
+	</div>
+
+	<div class="ui container footer"></div>
+</body>
+</html>
