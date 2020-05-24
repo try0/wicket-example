@@ -1,5 +1,6 @@
 package jp.try0.wicket.example.markup.html.list;
 
+import java.util.Iterator;
 import java.util.List;
 
 import org.apache.wicket.MarkupContainer;
@@ -64,7 +65,7 @@ public abstract class InfiniteScrollListView<T> extends PartialUpdatableListView
 		@Override
 		protected void respond(AjaxRequestTarget target) {
 
-			var itemIterator = itemProvider.iterator(getModelObject().size(), loadItemCount);
+			Iterator<? extends T> itemIterator = itemProvider.iterator(getModelObject().size(), loadItemCount);
 
 			switch (loadContentPosition) {
 			case AFTER:
@@ -115,7 +116,7 @@ public abstract class InfiniteScrollListView<T> extends PartialUpdatableListView
 		super.renderHead(response);
 
 
-		var listContainerId = getListContainerMarkupId();
+		String listContainerId = getListContainerMarkupId();
 
 		String loadScript = "var " + listContainerId + " = document.querySelector('#" + listContainerId + "');";
 

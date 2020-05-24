@@ -94,15 +94,15 @@ public class ListComponentExamplePanel extends AbstractExamplePanel {
 				{
 					setOutputMarkupId(true);
 
-					var itemProvider = new IDataProvider<Chat>() {
+					IDataProvider<Chat> itemProvider = new IDataProvider<Chat>() {
 
 						@Override
 						public Iterator<? extends Chat> iterator(long first, long count) {
 
-							var iterator = IntStream.range((int) first, (int) (first + count))
+							Iterator<Chat> iterator = IntStream.range((int) first, (int) (first + count))
 									.boxed()
 									.map(i -> {
-										var chat = new Chat();
+										Chat chat = new Chat();
 										chat.id = i;
 										chat.message = String.valueOf(i);
 										return chat;
@@ -129,8 +129,8 @@ public class ListComponentExamplePanel extends AbstractExamplePanel {
 					add(new InfiniteScrollListView<Chat>("chatListView", itemModel, itemProvider) {
 						{
 							setLoadItemCount(20);
-							for (var it = itemProvider.iterator(0, getLoadItemCount()); it.hasNext();) {
-								var item = it.next();
+							for (Iterator<? extends Chat> it = itemProvider.iterator(0, getLoadItemCount()); it.hasNext();) {
+								Chat item = it.next();
 								itemModel.getObject().add(item);
 							}
 						}

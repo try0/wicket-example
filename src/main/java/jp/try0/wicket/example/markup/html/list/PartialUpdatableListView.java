@@ -8,6 +8,8 @@ import java.util.stream.Collectors;
 
 import org.apache.wicket.Component;
 import org.apache.wicket.ajax.AjaxRequestTarget;
+import org.apache.wicket.markup.ComponentTag;
+import org.apache.wicket.markup.MarkupStream;
 import org.apache.wicket.markup.html.list.ListItem;
 import org.apache.wicket.markup.html.list.ListView;
 import org.apache.wicket.model.IModel;
@@ -64,9 +66,9 @@ public abstract class PartialUpdatableListView<T> extends ListView<T> {
 		if (itemTagName == null) {
 			// リピーターアイテムのタグ名を保持します。
 
-			var markupStream = findMarkupStream();
-			var tag = markupStream.getTag();
-			var tagName = tag.getName();
+			MarkupStream markupStream = findMarkupStream();
+			ComponentTag tag = markupStream.getTag();
+			String tagName = tag.getName();
 			itemTagName = tagName;
 		}
 
@@ -172,7 +174,7 @@ public abstract class PartialUpdatableListView<T> extends ListView<T> {
 			target.add(item);
 		}
 
-		var scriptAppendReplaceMarker = getAppendPlaceHolderElementScript(getParent(), appendItems);
+		String scriptAppendReplaceMarker = getAppendPlaceHolderElementScript(getParent(), appendItems);
 		target.prependJavaScript(scriptAppendReplaceMarker);
 	}
 
@@ -234,7 +236,7 @@ public abstract class PartialUpdatableListView<T> extends ListView<T> {
 			objIndex++;
 		}
 
-		var scriptAppendReplaceMarker = getAfterPlaceHolderElementScript(markItem, appendItems);
+		String scriptAppendReplaceMarker = getAfterPlaceHolderElementScript(markItem, appendItems);
 		target.prependJavaScript(scriptAppendReplaceMarker);
 	}
 
@@ -305,7 +307,7 @@ public abstract class PartialUpdatableListView<T> extends ListView<T> {
 		}
 
 		if (hasModelObject) {
-			var scriptAppendReplaceMarker = getBeforePlaceHolderElementScript(oldItems.get(0), appendItems);
+			String scriptAppendReplaceMarker = getBeforePlaceHolderElementScript(oldItems.get(0), appendItems);
 			target.prependJavaScript(scriptAppendReplaceMarker);
 
 			target.appendJavaScript(getAdjustScrollTopScript());
@@ -355,7 +357,7 @@ public abstract class PartialUpdatableListView<T> extends ListView<T> {
 			}
 		}
 
-		var scriptAppendReplaceMarker = getBeforePlaceHolderElementScript(markItem, appendItems);
+		String scriptAppendReplaceMarker = getBeforePlaceHolderElementScript(markItem, appendItems);
 		target.prependJavaScript(scriptAppendReplaceMarker);
 
 	}
@@ -414,9 +416,9 @@ public abstract class PartialUpdatableListView<T> extends ListView<T> {
 	protected String getBeforePlaceHolderElementScript(ListItem<?> baseItem, List<ListItem<?>> items) {
 		String itemIdArray = getItemIdArrayScript(items);
 
-		var listContainerId = getParent().getMarkupId();
+		String listContainerId = getParent().getMarkupId();
 
-		var oldPos = "var container = document.getElementById('" + listContainerId + "');"
+		String oldPos = "var container = document.getElementById('" + listContainerId + "');"
 				+ "var sh = container.scrollHeight;"
 				+ "content.setAttribute('data-old-scrollHeight', sh);";
 
@@ -431,7 +433,7 @@ public abstract class PartialUpdatableListView<T> extends ListView<T> {
 	 * @return
 	 */
 	protected String getAdjustScrollTopScript() {
-		var listContainerId = getParent().getMarkupId();
+		String listContainerId = getParent().getMarkupId();
 
 		return "var container = document.getElementById('" + listContainerId + "');"
 				+ "var sh = container.scrollHeight;"
