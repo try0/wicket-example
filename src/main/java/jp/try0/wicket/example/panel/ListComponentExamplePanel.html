@@ -2,42 +2,9 @@
 <html xmlns:wicket="http://wicket.apache.org">
 <wicket:extend>
 
-	<h5>Partial Update</h5>
-	<div class="sixteen wide column">
-		<div class="ui basic segment" style="max-height: 400px; overflow: auto; padding: 5px;">
-			<table class="ui table">
-				<tbody wicket:id="lvContainer">
-					<tr wicket:id="list">
-						<td><div class="ui segment">
-								<label wicket:id="itemLabel"></label>
-							</div></td>
-					</tr>
-				</tbody>
-			</table>
-		</div>
-	</div>
-	<a wicket:id="btnAddItem" class="ui button m-10">Add Item × 3</a>
 
-	<hr>
-
-	<h5 class="ui header">Infinite Scroll</h5>
-	<div class="sixteen wide column">
-
-		<div wicket:id="isArea" class="ui basic segment">
-			<div wicket:id="isContainer"
-				style="max-height: 400px; overflow: auto; padding: 5px;">
-				<div wicket:id="chatListView" class="ui fluid card">
-					<div class="content">
-						<div class="header">Message</div>
-					</div>
-					<div class="content">
-						<span wicket:id="chatMessage"></span>
-					</div>
-
-				</div>
-			</div>
-		</div>
-	</div>
+	<div wicket:id="PartialUpdatableListViewExamplePanel" ></div>
+	<div wicket:id="InfiniteScrollListViewExamplePanel" ></div>
 
 </wicket:extend>
 </html>

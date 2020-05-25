@@ -102,7 +102,7 @@ public abstract class InfiniteScrollListView<T> extends PartialUpdatableListView
 	 *
 	 * @param id
 	 * @param model
-	 * @param itemProvider
+	 * @param itemProvider TODO IDataProviderじゃなく専用のプロバイダー用意したほうがいいか？
 	 */
 	public InfiniteScrollListView(String id, IModel<List<T>> model, IDataProvider<T> itemProvider) {
 		super(id, model);
