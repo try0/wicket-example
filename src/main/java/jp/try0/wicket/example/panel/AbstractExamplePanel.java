@@ -22,7 +22,7 @@ public abstract class AbstractExamplePanel extends Panel {
 	}
 
 	public static String getGitHubUrl(Class<?> clazz) {
-		String base = "https://github.com/try0/wicket-example/tree/master/wicket-example/src/main/java/";
+		String base = "https://github.com/try0/wicket-example/tree/master/src/main/java/";
 		return base + clazz.getName().replaceAll(Pattern.quote("."), "/") + ".java";
 	}
 
