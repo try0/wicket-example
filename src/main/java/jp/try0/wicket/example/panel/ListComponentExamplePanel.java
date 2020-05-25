@@ -155,6 +155,7 @@ public class ListComponentExamplePanel extends AbstractExamplePanel {
 							item.add(new Label("chatMessage", item.getModelObject().message));
 						}
 
+						@Override
 						protected void onLoadItem(AjaxRequestTarget target) {
 							target.appendJavaScript("$('#" + isArea.getMarkupId() + "').removeClass('loading');");
 						}
