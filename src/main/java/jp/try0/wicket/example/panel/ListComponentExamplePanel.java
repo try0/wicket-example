@@ -90,7 +90,14 @@ public class ListComponentExamplePanel extends AbstractExamplePanel {
 		{
 			// InfiniteScrollListView
 
-			add(new WebMarkupContainer("isContainer") {
+			final WebMarkupContainer isArea;
+			add(isArea = new WebMarkupContainer("isArea") {
+
+				{
+					setOutputMarkupId(true);
+				}
+			});
+			queue(new WebMarkupContainer("isContainer") {
 				{
 					setOutputMarkupId(true);
 
@@ -99,6 +106,11 @@ public class ListComponentExamplePanel extends AbstractExamplePanel {
 						@Override
 						public Iterator<? extends Chat> iterator(long first, long count) {
 
+							try {
+								Thread.sleep(1000);
+							} catch (Exception ignore) {
+
+							}
 							Iterator<Chat> iterator = IntStream.range((int) first, (int) (first + count))
 									.boxed()
 									.map(i -> {
@@ -129,6 +141,8 @@ public class ListComponentExamplePanel extends AbstractExamplePanel {
 					add(new InfiniteScrollListView<Chat>("chatListView", itemModel, itemProvider) {
 						{
 							setLoadItemCount(20);
+							setOnLoadScript("$('#" + isArea.getMarkupId() + "').addClass('loading');");
+
 							for (Iterator<? extends Chat> it = itemProvider.iterator(0, getLoadItemCount()); it.hasNext();) {
 								Chat item = it.next();
 								itemModel.getObject().add(item);
@@ -141,6 +155,9 @@ public class ListComponentExamplePanel extends AbstractExamplePanel {
 							item.add(new Label("chatMessage", item.getModelObject().message));
 						}
 
+						protected void onLoadItem(AjaxRequestTarget target) {
+							target.appendJavaScript("$('#" + isArea.getMarkupId() + "').removeClass('loading');");
+						}
 					});
 				}
 			});
