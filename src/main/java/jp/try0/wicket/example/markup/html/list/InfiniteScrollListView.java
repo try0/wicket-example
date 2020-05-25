@@ -58,6 +58,11 @@ public abstract class InfiniteScrollListView<T> extends PartialUpdatableListView
 	private int loadItemCount = DEFAULT_ITEM_COUNT;
 
 	/**
+	 * ロード時に実行するスクリプト
+	 */
+	private String onLoadScript = "";
+
+	/**
 	 * ロード処理
 	 */
 	private AbstractDefaultAjaxBehavior itemLoadBehavior = new AbstractDefaultAjaxBehavior() {
@@ -78,12 +83,10 @@ public abstract class InfiniteScrollListView<T> extends PartialUpdatableListView
 				break;
 			}
 
-			onLoadItem(target, loadContentPosition);
+			onLoadItem(target);
 		}
 
 	};
-
-
 
 	/**
 	 * コンストラクター
@@ -106,15 +109,12 @@ public abstract class InfiniteScrollListView<T> extends PartialUpdatableListView
 		this.itemProvider = itemProvider;
 	}
 
-
-
 	/**
 	 * {@inheritDoc}
 	 */
 	@Override
 	public void renderHead(IHeaderResponse response) {
 		super.renderHead(response);
-
 
 		String listContainerId = getListContainerMarkupId();
 
@@ -130,6 +130,7 @@ public abstract class InfiniteScrollListView<T> extends PartialUpdatableListView
 			// 先頭でロード
 			loadScript += "if(" + listContainerId + ".scrollTop == 0) {"
 					+ itemLoadBehavior.getCallbackScript()
+					+ getOnLoadScript()
 					+ "} ";
 		} else {
 			// 末尾でロード
@@ -137,6 +138,7 @@ public abstract class InfiniteScrollListView<T> extends PartialUpdatableListView
 					+ listContainerId
 					+ ".scrollHeight) {"
 					+ itemLoadBehavior.getCallbackScript()
+					+ getOnLoadScript()
 					+ "}";
 		}
 
@@ -159,6 +161,7 @@ public abstract class InfiniteScrollListView<T> extends PartialUpdatableListView
 
 	/**
 	 * ロードタイプを取得します。
+	 *
 	 * @return
 	 */
 	public LoadContentPosition getLoadContentPosition() {
@@ -211,6 +214,26 @@ public abstract class InfiniteScrollListView<T> extends PartialUpdatableListView
 	}
 
 	/**
+	 * アイテムロード時に実行するスクリプトを取得します。
+	 *
+	 * @return
+	 */
+	public String getOnLoadScript() {
+		return onLoadScript;
+	}
+
+	/**
+	 * アイテムロード時に実行するスクリプトをセットします。
+	 *
+	 * @param javascript
+	 */
+	public void setOnLoadScript(String onLoadScript) {
+		this.onLoadScript = onLoadScript;
+	}
+
+
+
+	/**
 	 * リストコンテナーを取得します。
 	 *
 	 * @see #getParent()
@@ -237,8 +260,10 @@ public abstract class InfiniteScrollListView<T> extends PartialUpdatableListView
 	 * @param target
 	 * @param position
 	 */
-	protected void onLoadItem(AjaxRequestTarget target, LoadContentPosition position) {
+	protected void onLoadItem(AjaxRequestTarget target) {
 		// noop
 	}
+
+
 
 }
