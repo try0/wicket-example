@@ -38,6 +38,10 @@ public class PartialUpdatableListViewExamplePanel extends AbstractExamplePanel {
 	@Override
 	protected void onInitialize() {
 		super.onInitialize();
+
+		addRelatedComponents(PartialUpdatableListView.class);
+
+
 		List<String> listItem = new ArrayList<>();
 		listItem.add("1");
 		listItem.add("2");

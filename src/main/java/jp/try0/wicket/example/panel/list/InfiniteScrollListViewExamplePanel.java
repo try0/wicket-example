@@ -16,6 +16,7 @@ import org.apache.wicket.model.IModel;
 import org.apache.wicket.model.Model;
 
 import jp.try0.wicket.example.markup.html.list.InfiniteScrollListView;
+import jp.try0.wicket.example.markup.html.list.PartialUpdatableListView;
 import jp.try0.wicket.example.panel.AbstractExamplePanel;
 
 /**
@@ -40,6 +41,8 @@ public class InfiniteScrollListViewExamplePanel extends AbstractExamplePanel {
 	@Override
 	protected void onInitialize() {
 		super.onInitialize();
+
+		addRelatedComponents(InfiniteScrollListView.class, PartialUpdatableListView.class);
 
 		final WebMarkupContainer isArea;
 		add(isArea = new WebMarkupContainer("isArea") {
@@ -116,5 +119,7 @@ public class InfiniteScrollListViewExamplePanel extends AbstractExamplePanel {
 		});
 
 	}
+
+
 
 }

@@ -5,13 +5,14 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Apache Wicket Example</title>
 
-<link rel="stylesheet"
-	href="https://cdnjs.cloudflare.com/ajax/libs/fomantic-ui/2.8.4/semantic.min.css"
-	type="text/css" media="screen" title="Stylesheet" />
-<script
-	src="https://cdnjs.cloudflare.com/ajax/libs/fomantic-ui/2.8.4/semantic.min.js"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fomantic-ui/2.8.4/semantic.min.css" type="text/css" media="screen" title="Stylesheet" />
+<script src="https://cdnjs.cloudflare.com/ajax/libs/fomantic-ui/2.8.4/semantic.min.js"></script>
 
-
+<script type="text/javascript">
+	$(function() {
+		$('.ui.accordion').accordion();
+	});
+</script>
 <style>
 .footer {
 	padding-bottom: 10rem;
@@ -33,15 +34,12 @@
 			<div class="header left item">Example</div>
 
 			<div class="right menu">
-				<a class="item" target="blank"
-					href="https://github.com/try0/wicket-example"><i
-					class="github large icon"></i></a>
+				<a class="item" target="blank" href="https://github.com/try0/wicket-example"><i class="github large icon"></i></a>
 			</div>
 		</div>
 	</div>
 
-	<div class="ui container main"
-		style="max-width: 800px !important; padding-top: 4rem;">
+	<div class="ui container main" style="max-width: 800px !important; padding-top: 4rem;">
 		<div wicket:id="listComponentExample"></div>
 	</div>
 
