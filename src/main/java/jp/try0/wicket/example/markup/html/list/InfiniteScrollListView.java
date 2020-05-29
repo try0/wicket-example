@@ -154,7 +154,7 @@ public abstract class InfiniteScrollListView<T> extends PartialUpdatableListView
 	protected void onInitialize() {
 		super.onInitialize();
 
-		// ListViewに追加しても発火しないっぽい？
+		// ListViewに追加しても発火しない
 		getParent().add(itemLoadBehavior);
 
 	}

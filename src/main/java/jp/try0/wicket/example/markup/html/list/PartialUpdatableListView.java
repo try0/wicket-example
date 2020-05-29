@@ -121,7 +121,7 @@ public abstract class PartialUpdatableListView<T> extends ListView<T> {
 	 *
 	 * @param item
 	 */
-	private void raizePopulation(ListItem<T> item) {
+	private void raisePopulate(ListItem<T> item) {
 
 		// Populate the list item
 		onBeginPopulateItem(item);
@@ -167,7 +167,7 @@ public abstract class PartialUpdatableListView<T> extends ListView<T> {
 			// Add list item
 			ListItem<T> item = createAndAppendItem(modelObject.size() - 1, () -> obj);
 
-			raizePopulation(item);
+			raisePopulate(item);
 			appendItems.add(item);
 
 			// update
@@ -231,7 +231,7 @@ public abstract class PartialUpdatableListView<T> extends ListView<T> {
 				item.setMarkupId(oldItems.get(objIndex - appendItems.size()).getMarkupId());
 			}
 
-			raizePopulation(item);
+			raisePopulate(item);
 
 			objIndex++;
 		}
@@ -301,7 +301,7 @@ public abstract class PartialUpdatableListView<T> extends ListView<T> {
 				item.setMarkupId(oldItems.get(objIndex - appendItems.size()).getMarkupId());
 			}
 
-			raizePopulation(item);
+			raisePopulate(item);
 
 			objIndex++;
 		}
@@ -348,7 +348,7 @@ public abstract class PartialUpdatableListView<T> extends ListView<T> {
 		for (T obj : modelObject) {
 			// Add list item
 			ListItem<T> item = createAndAppendItem(modelObject.indexOf(obj), () -> obj);
-			raizePopulation(item);
+			raisePopulate(item);
 			int objIndex = modelObject.indexOf(obj);
 			if (objIndex >= insIndex && objIndex < insIndex + objs.size()) {
 				appendItems.add(item);
