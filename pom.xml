@@ -36,7 +36,7 @@
 
 	<properties>
 		<wicket.version>8.8.0</wicket.version>
-		<jetty9.version>9.4.7.v20170914</jetty9.version>
+		<jetty9.version>9.4.34.v20201102</jetty9.version>
 		<slf4j.version>1.7.25</slf4j.version>
 		<junit.version>4.13.1</junit.version>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
